@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title>
+        com5961 assignment4
+        </title>
+    </head>
+
+    <body>
+        <h1 style="
+        color: brown;
+        margin-left: 2em;
+        margin-top: 2em;
+        font-size: 1.5em;
+    ">A Simple Calculator</h1>
+        <h2 style="
+        font-size: 1em;
+        margin-left: 16em;
+        color: grey;
+        font-family: -webkit-pictograph;
+    ">Created by JIN Yuyang(1155128201)</h2>
+
+    <table>
+        <tr>
+            <td style="
+            font-size: 0.9em;
+            height: 2em;
+            width: 14em;
+            text-align: Right;
+            ">Input the first number :</td>
+            <td>
+            <input type="text" id="oneNum"></td>
+        </tr>
+        <tr>
+            <td style="
+            font-size: 0.9em;
+            text-align: Right;
+            ">Input the second number :</td>
+            <td><input type="text" id="twoNum"/></td>
+        </tr>
+        <tr>
+            <td colspan="2" style="height: 3em; text-align: center;">
+            <input onclick="add()" type="button" id="add" value="+" class="button" />
+            <input onclick="sub()" type="button" id="sub" value="-" class="button"/>
+            <input onclick="mul()" type="button" id="mul" value="*" class="button"/>
+            <input onclick="divide()" type="button" id="divide" value="/" class="button"/>
+            </td>
+        </tr>
+        <tr>
+            <td style="
+            text-align: right;
+            font-size: 0.9em;
+            height: 2em;
+            ">answer :</td>
+            <td><input type="text" id="result"/></td>
+        </tr>
+    </table>
+    </body>
+
+<script>
+    var num_1=document.getElementById("oneNum");
+    var num_2=document.getElementById("twoNum");
+    var result=document.getElementById("result");
+
+    function add(){
+        result.value=parseFloat(num_1.value)+parseFloat(num_2.value);
+    }
+    function sub(){
+        result.value=parseFloat(num_1.value)-parseFloat(num_2.value);
+    }
+    function mul(){
+        result.value=parseFloat(num_1.value)*parseFloat(num_2.value);
+    }
+    function divide(){
+        result.value=parseFloat(num_1.value)/parseFloat(num_2.value);
+    }
+
+</script>
+
+</html>
