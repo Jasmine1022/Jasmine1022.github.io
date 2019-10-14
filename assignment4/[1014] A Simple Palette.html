@@ -1,0 +1,249 @@
+<!doctype html>
+<html>
+
+<head>
+<h1 style="
+    font-family: fantasy;
+    text-align: center;
+    margin-top: 50px;
+    text-shadow: 0 1px 2px #888888;
+    ">com5961 assignment 4: A simple palette</h1>
+</head>
+
+<body>
+  <div class="color-slider-wrap">
+    <div class="color-wrap">
+    <div id="color-display"></div>
+  </div>
+
+  <div class="sliders">
+  <div>
+      <label for="red">Red</label>
+      <input type="number" id="redNum">
+      <input value="200" type="range" min="0" max="255" id="red">
+  </div>
+  <div>
+       <label for="green">Green</label>
+       <input type="number" id="greenNum">
+       <input value="130" type="range" min="0" max="255" id="green">
+  </div>
+  <div>
+        <label for="blue">Blue</label>
+        <input type="number" id="blueNum">
+        <input  value="180" type="range" min="0" max="255" id="blue">
+   </div>
+   </div>
+</body>
+
+<style>
+*{
+padding: 4px;
+    margin: 4px;
+}
+
+body{
+    font-family: sans-serif;
+    background: #e0e0e0;
+}
+
+#color-display{
+    padding: 30px;
+    box-shadow: 2 2 8px #aaaaaa;
+    text-align: center;
+    font-family:'Times New Roman', Times, serif;
+    font-size:larger;
+}
+
+#color-display::before{
+    content: 'Please move sliders to change color, or enter numbers between 0 to 255 in the number fields';
+    color: #ffffff;
+}
+
+label{
+    padding: 10px;
+    width: 50px;
+    text-align: center;
+    font-family: fantasy;
+    color: #ffffff;
+    margin: 4px;
+    box-shadow: inset 0 0 2px #333333;
+}
+
+input[type=number], label{
+    display: inline-block;
+}
+
+.sliders{
+    margin-top: 20px;
+    padding: 30px;
+    box-shadow: 0 0 8px #aaaaaa;
+    border: 2px solid #f4f4f4;
+    background: #f1f1f1;
+}
+
+.sliders input[type=range]{
+    height: 3px;
+    border-radius: 10px;
+    outline: none;
+    width: 100%;
+    box-shadow: 0 0 2px #444444, inset 0 0 2px #444444;
+}
+
+.sliders input[type=range], input[type=range]::-webkit-slider-thumb{
+    appearance: none;
+    -webkit-appearance: none;
+} 
+
+.sliders input[type=range]::-webkit-slider-thumb{
+    height: 20px;
+    width: 24px;
+    border-radius: 20%;
+    cursor: pointer;
+    background: #cccccc;
+    border: 2px solid #eeeeee;
+    box-shadow: 0 0 4px #444444, inset 0 0 2px #444444;
+} 
+</style>
+
+<script>
+function qs(selectEl){
+    return document.querySelector(selectEl);
+}
+
+let red = qs('#red'), 
+green = qs('#green'), 
+blue = qs('#blue'); 
+
+let redNumVal = qs('#redNum'), 
+greenNumVal = qs('#greenNum'), 
+blueNumVal = qs('#blueNum');
+
+let colorDisplay = qs('#color-display');
+
+let redLbl = qs('label[for=red]'), 
+greenLbl = qs('label[for=green]'), 
+blueLbl = qs('label[for=blue]');
+
+displayColors();
+colorNumbrVals();
+initSliderColors();
+changeRangeNumVal();
+colorSliders();
+
+function displayColors(){
+    colorDisplay.style.backgroundColor = `rgb(${red.value}, ${green.value}, ${blue.value})`;    
+}
+
+function colorNumbrVals(){
+    redNumVal.value = red.value;
+    greenNumVal.value = green.value;
+    blueNumVal.value = blue.value;
+}
+
+function initSliderColors(){
+    redLbl.style.background = `rgb(${red.value},0,0)`;
+    greenLbl.style.background = `rgb(0,${green.value},0)`;
+    blueLbl.style.background = `rgb(0,0,${blue.value})`;
+    sliderFill(red);
+    sliderFill(green);
+    sliderFill(blue);
+}
+
+function sliderFill(clr){
+    let val = (clr.value - clr.min) / (clr.max - clr.min);
+    let percent = val * 100;
+    if(clr === red){
+        clr.style.background = `linear-gradient(to right, rgb(${clr.value},0,0) ${percent}%, #cccccc 0%)`;    
+    } else if (clr === green) {
+        clr.style.background = `linear-gradient(to right, rgb(0,${clr.value},0) ${percent}%, #cccccc 0%)`;    
+    } else if (clr === blue) {
+        clr.style.background = `linear-gradient(to right, rgb(0,0,${clr.value}) ${percent}%, #cccccc 0%)`;    
+    }
+}
+
+function changeRangeNumVal(){
+
+    redNumVal.addEventListener('change', ()=>{
+        if(redNumVal.value > 255){
+            alert('cannot enter numbers greater than 255');
+            redNumVal.value = red.value;
+        } else if(redNumVal.value < 0) {
+            alert('cannot enter numbers less than 0');  
+            redNumVal.value = red.value;            
+        } else if (redNumVal.value == '') {
+            alert('cannot leave field empty');
+            redNumVal.value = red.value;
+            initSliderColors();
+            displayColors();
+        } else {
+            red.value = redNumVal.value;
+            initSliderColors();
+            displayColors();
+        }
+    });
+
+    greenNumVal.addEventListener('change', ()=>{
+        if(greenNumVal.value > 255){
+            alert('cannot enter numbers greater than 255');
+            greenNumVal.value = green.value;
+        } else if(greenNumVal.value < 0) {
+            alert('cannot enter numbers less than 0');  
+            greenNumVal.value = green.value;            
+        } else if(greenNumVal.value == '') {
+            alert('cannot leave field empty');
+            greenNumVal.value = green.value;
+            initSliderColors();
+            displayColors();
+        } else {
+            green.value = greenNumVal.value;            
+            initSliderColors();
+            displayColors();
+        }
+    });
+
+    blueNumVal.addEventListener('change', ()=>{
+        if (blueNumVal.value > 255) {
+            alert('cannot enter numbers greater than 255');
+            blueNumVal.value = blue.value;
+        } else if (blueNumVal.value < 0) {
+            alert('cannot enter numbers less than 0');
+            blueNumVal.value = blue.value;
+        } else if(blueNumVal.value == '') {
+            alert('cannot leave field empty');
+            blueNumVal.value = blue.value;
+            initSliderColors();
+            displayColors();
+        } else {
+            blue.value = blueNumVal.value;            
+            initSliderColors();
+            displayColors();
+        }
+    });
+}
+
+function colorSliders(){
+    red.addEventListener('input', () => {
+        displayColors();
+        initSliderColors();
+        changeRangeNumVal();
+        colorNumbrVals();
+    });
+
+    green.addEventListener('input', () => {
+        displayColors();
+        initSliderColors();
+        changeRangeNumVal();
+        colorNumbrVals();
+    });
+
+    blue.addEventListener('input', () => {
+        displayColors();
+        initSliderColors();
+        changeRangeNumVal();
+        colorNumbrVals();
+    });
+}
+</script>
+
+
+</html>
