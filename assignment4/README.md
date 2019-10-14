@@ -1,2 +1,2 @@
 # Jasmine1022.github.io
-com5961 assignments
+Here are two simple games as my assignment 4.
