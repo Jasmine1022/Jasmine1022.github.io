@@ -1,21 +1,22 @@
 {  
-  "data":[  
+  "data":
 
-      {
-        "类型": "粉丝见面会",
-        "2019.5至今演出情况": "IU,柳俊烈,BlackPink,任时完,JunJin(神话),孔璨(B1A4),朴宝剑,李玟雨(神话),朱智勋,Mamamoo,AB6IX,崔普闵(Golden Child) ,金南吉,ZICO,BTS(防弹少年团),黄灿盛(2PM),申升勋,JBJ95,丁一宇,申彗星(神话),金在奂,朴志训,圭贤(Super Junior),池昌旭,iKON,XIUMIN(EXO),金希澈,尹智圣,申彗星(神话),Twice,徐康俊,Tony",
-        "次数": 32
-      },
-      {
-        "类型": "演唱会",
-        "2019.5至今演出情况": "VIXX,H.O.T,Seventeen,BTS(防弹少年团),朴正炫 ,ZICO,SF9,DAY6,南优铉,LOVELYZ,郑恩地(Apink),蔡甫熏,Tiffany,EXO,郑世云,河成云,朴孝信,TeenTop,Jay Park(朴宰范),金钟国,灿多(B1A4),FTISLAND,A.C.E,IZ*ONE,LEO(VIXX),宣美,GOT7,金俊秀(JYJ),\"李泰欥(TAEIL), 朴经(PARK KYUNG)\",Twice,GFRIEND,\"李泰民(SHINee), Red Velvet, Seventeen，NCT DREAM等\",尼坤Nichkhun(2PM),脸红的思春期,BoA,Winner,Super Junior",
-        "次数": 37
-      },
-      {
-        "类型": "showcase",
-        "2019.5至今演出情况": "AB6IX,AB6IX",
-        "次数": 2
-      }
+  [
+    {
+      "类型": "粉丝见面会",
+      "2019.5至今演出情况": "IU,柳俊烈,BlackPink,任时完,JunJin(神话),孔璨(B1A4),朴宝剑,李玟雨(神话),朱智勋,Mamamoo,AB6IX,崔普闵(Golden Child) ,金南吉,ZICO,BTS(防弹少年团),黄灿盛(2PM),申升勋,JBJ95,丁一宇,申彗星(神话),金在奂,朴志训,圭贤(Super Junior),池昌旭,iKON,XIUMIN(EXO),金希澈,尹智圣,申彗星(神话),Twice,徐康俊,Tony",
+      "次数": 32
+    },
+    {
+      "类型": "演唱会",
+      "2019.5至今演出情况": "VIXX,H.O.T,Seventeen,BTS(防弹少年团),朴正炫 ,ZICO,SF9,DAY6,南优铉,LOVELYZ,郑恩地(Apink),蔡甫熏,Tiffany,EXO,郑世云,河成云,朴孝信,TeenTop,Jay Park(朴宰范),金钟国,灿多(B1A4),FTISLAND,A.C.E,IZ*ONE,LEO(VIXX),宣美,GOT7,金俊秀(JYJ),\"李泰欥(TAEIL), 朴经(PARK KYUNG)\",Twice,GFRIEND,\"李泰民(SHINee), Red Velvet, Seventeen，NCT DREAM等\",尼坤Nichkhun(2PM),脸红的思春期,BoA,Winner,Super Junior",
+      "次数": 37
+    },
+    {
+      "类型": "showcase",
+      "2019.5至今演出情况": "AB6IX,AB6IX",
+      "次数": 2
+    }
+  ]
 
-]
 }
