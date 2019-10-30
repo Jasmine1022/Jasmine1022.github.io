@@ -52,49 +52,48 @@ $(document).ready(function(){
                          defaultContent:""},
                  ]
              } );
-        }); // end .getJSON
-     }); // end button
-     $("button#get_data2").click(function() {
-        var items = [];
-        var i = 0;
-        var airtable_read_endpoint = "https://api.airtable.com/v0/app4dCIRDc3Hn3jOA/%E6%BC%94%E5%87%BA%E7%B1%BB%E5%9E%8B%E6%B1%87%E6%80%BB?api_key=keyFNbgLbJbzpQY3F";
-        var dataSet = [];
-        $.getJSON(airtable_read_endpoint, function(result) {
-               $.each(result.records, function(key,value) {
-                   items = [];
-                       items.push(value.fields.类型);
-                       items.push(value.fields.次数);
-                       dataSet.push(items);
-                       console.log(items);
-                }); // end .each
-                console.log(dataSet);
   
-             $('#table2').DataTable( {
-                 data: dataSet,
-                 retrieve: true,
-                 columns: [
-                     { title: "类型",
-                       defaultContent:""},
-                     { title: "次数",
-                         defaultContent:"" },
-                 ]
-             } );
+$("button#get_data2").click(function() {
+    var items = [];
+    var i = 0;
+    var airtable_read_endpoint = "https://api.airtable.com/v0/app4dCIRDc3Hn3jOA/%E6%BC%94%E5%87%BA%E7%B1%BB%E5%9E%8B%E6%B1%87%E6%80%BB?api_key=keyFNbgLbJbzpQY3F";
+    var dataSet = [];
+    $.getJSON(airtable_read_endpoint, function(result) {
+    $.each(result.records, function(key,value) {
+    items = [];
+    items.push(value.fields.类型);
+    items.push(value.fields.次数);
+    dataSet.push(items);
+    console.log(items);
+     }); 
+    console.log(dataSet);
+              
+   $('#table2').DataTable( {
+    data: dataSet,
+    retrieve: true,
+    columns: [
+    { title: "类型",
+    defaultContent:""},
+    { title: "次数",
+    defaultContent:"" },
+    ]
+    } );
+              
+    var chart = c3.generate({
+                   data: {
+                   columns: dataSet,
+                   type : 'bar'
+                   },
+                   axis: {
+                   x: {label: '类型'},
+                   y: {label: '每一类型的表演次数'}
+                   },
+                   bar: {
+                   title: "每一类型的表演次数",
+                              }
+                          });
   
-             var chart = c3.generate({
-                  data: {
-                      columns: dataSet,
-                      type : 'bar'
-                  },
-                  axis: {
-                    x: {label: '类型'},
-                    y: {label: '# of Items'}
-                  },
-                  bar: {
-                      title: "# of Items by Product Category:",
-                  }
-              });
-  
-        }); // end .getJSON
+        }); 
   
      }); // end button
 
