@@ -25,8 +25,9 @@ $(document).ready(function(){
                    items = [];
                        items.push(value.fields.演出者);
                        items.push(value.fields.首日);
-                       items.push(value.fields.场地);
                        items.push(value.fields.演出名);
+                       items.push(value.fields.场地);
+                       items.push(value.fields.所属场地);
                        items.push(value.fields.类型);
                        dataSet.push(items);
                        console.log(items);
@@ -41,10 +42,12 @@ $(document).ready(function(){
                        defaultContent:""},
                      { title: "首日",
                          defaultContent:"" },
-                     { title: "场地",
-                       defaultContent:"" },
                      { title: "演出名",
+                       defaultContent:"" },
+                     { title: "场地",
                        defaultContent:""},
+                     { title: "所属场地",
+                         defaultContent:""},
                      { title: "类型",
                          defaultContent:""},
                  ]
@@ -59,8 +62,8 @@ $(document).ready(function(){
         $.getJSON(airtable_read_endpoint, function(result) {
                $.each(result.records, function(key,value) {
                    items = [];
-                       items.push(value.fields.Name);
-                       items.push(value.fields.total_items_by_category);
+                       items.push(value.fields.类型);
+                       items.push(value.fields.次数);
                        dataSet.push(items);
                        console.log(items);
                 }); // end .each
