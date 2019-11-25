@@ -939,6 +939,9 @@ body.mobile-nav-active #mobile-nav-toggle {
 
 #tips #tips-list p {
   margin-bottom: 20px;
+  font-size:14px;
+  line-height: 18px;
+  font-family: 'Noto Serif SC', serif;
 }
 
 #tips #tips-list a.collapse {
