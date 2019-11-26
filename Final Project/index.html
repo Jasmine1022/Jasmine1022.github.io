@@ -27,6 +27,11 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.3.4/leaflet.js"></script>
         <script src="https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/leaflet.markercluster.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <!-- chart d3 c3-->
+        <link href="//cdnjs.cloudflare.com/ajax/libs/c3/0.1.29/c3.css" rel="stylesheet" type="text/css">
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/d3/3.4.11/d3.js"></script>
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/c3/0.1.29/c3.js"></script>
+        <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
         <!--=======================================================T
         heme Name:==========================H eader============================-->
     </head>
@@ -597,8 +602,7 @@
                     <div class="row">
                         <div class="col-lg-4 col-md-6">
                             <div class="speaker">
-                                <a href="venuetype1-details.html"><img src="https://dl.airtable.com/.attachments/c7feecfa0deffd1d30a055a28a50b1ba/bd191a97/type1.jpg
-                                    " alt="venue1" class="img-fluid"></a>
+                                <a href="venuetype1-details.html"><img src="img/venue/type1.jpg" alt="venue1" class="img-fluid"></a>
                                 <div class="details">
                                     <h3>
                                         <a href="venuetype1-details.html" style="font-size: 18px;font-family: 'Noto Serif SC', serif;font-weight:600;">竞技场/体育馆</a>
@@ -608,8 +612,7 @@
                         </div>
                         <div class="col-lg-4 col-md-6">
                             <div class="speaker">
-                                <a href="venuetype2-details.html"><img src="https://dl.airtable.com/.attachments/2ca61042b2c7901a6c14621eb3077f93/d05cc39c/type2.PNG
-                                    " alt="venue2" class="img-fluid"></a>
+                                <a href="venuetype2-details.html"><img src="img/venue/type2.png" alt="venue2" class="img-fluid"></a>
                                 <div class="details">
                                     <h3>
                                         <a href="venuetype2-details.html" style="font-size: 18px;font-family: 'Noto Serif SC', serif;font-weight:600;">大学会馆</a>
@@ -619,8 +622,7 @@
                         </div>
                         <div class="col-lg-4 col-md-6">
                             <div class="speaker">
-                                <a href="venuetype3-details.html"><img src="https://dl.airtable.com/.attachments/de2c75d2795f0e8fa658530a03c248fd/03132709/type3.jpg
-                                    " alt="Speaker 3" class="img-fluid"></a>
+                                <a href="venuetype3-details.html"><img src="img/venue/type3.jpg" alt="Speaker 3" class="img-fluid"></a>
                                 <div class="details">
                                     <h3>
                                         <a href="venuetype3-details.html" style="font-size: 18px;font-family: 'Noto Serif SC', serif;font-weight:600;">会展中心</a>
@@ -628,16 +630,18 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-xs-12 col-sm-12 col-md-12">
-                            <br>
-                            <br>
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6">
+                                    <br>
+                                    <br>
                             <button type="button" class="btn btn-danger" id="roll_up" onclick="show_districts();"
-                            style="font-family: 'Noto Serif SC', serif;">查看所有场馆具体位置</button>
+                            style="font-family: 'Noto Serif SC', serif;margin-left:20px;">查看所有场馆具体位置</button>
                             <br>
                             <br>
-                            <div id="map" style="width: 450px; height: 200px;"></div>
+                            <div id="map" style="width: 400px; height: 220px;margin-left:20px;"></div>
                             <br>
                             <br>
+                        </div>
                         </div>
                         <script>
                             var mapboxTiles = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {attribution: 'Map data &copy; <a href="https://openstreetmap.org">OpenStreetMap</a>', maxZoom: 18,});
@@ -675,6 +679,65 @@
                                     
                                              }
                         </script>
+
+                        <div class="row">
+                            <div class="table-responsive">
+                              <br>
+                              <br>
+                          <button type="button" class="btn btn-danger" id="ranking"
+                          style="font-family: 'Noto Serif SC', serif;margin-left:20px;">比较所有场馆的最多容纳人数</button>
+                              <br>
+                              <div class="table-responsive">
+                                  <table id="table" width="100%" class="table table-bordered"></table>
+                              </div>
+                          <div id="chart"></div>
+                        </div>
+                        </div>
+
+                        <script>
+                         $("button#ranking").click(function() {
+                         var items = [];
+                         var i = 0;
+                         var airtable_read_endpoint = "https://api.airtable.com/v0/app4dCIRDc3Hn3jOA/%E6%BC%94%E5%87%BA%E7%B1%BB%E5%9E%8B%E6%B1%87%E6%80%BB?api_key=keyFNbgLbJbzpQY3F";
+                         var dataSet = [];
+                         $.getJSON(airtable_read_endpoint, function(result) {
+                         $.each(result.records, function(key,value) {
+                         items = [];
+                         items.push(value.fields.类型);
+                         items.push(value.fields.次数);
+                         dataSet.push(items);
+                         console.log(items);
+                         }); // end .each
+                         console.log(dataSet);
+
+                        $('#table').DataTable( {
+                        data: dataSet,
+                        retrieve: true,
+                        columns: [
+                        { title: "类型",
+                        defaultContent:""},
+                        { title: "次数",
+                       defaultContent:"" },
+                        ]
+                        } );
+
+                        var chart = c3.generate({
+                        data: {
+                        columns: dataSet,
+                        type : 'bar'
+                        },
+                        axis: {
+                        x: {label: '类型'},
+                        y: {label: '次数'}
+                        },
+                        bar: {
+                         title: "每一类型的演出次数:",
+                        }
+                       });
+                    });
+                    }); 
+                        </script>
+
                     </div>
                 </div>
             </section>
@@ -696,49 +759,45 @@
                         <div class="col-lg-3 col-md-6">
                             <div class="hotel">
                                 <div class="hotel-img">
-                                    <img src="https://dl.airtable.com/.attachments/0d291b0f3954846677631ccb0d2ad424/c3132859/1.PNG
-                                    " alt="nearby 1" class="img-fluid">
+                                    <img src="img/nearby/1.png" alt="nearby 1" class="img-fluid">
                                 </div>
                                 <h3>
                                     <a href="distinct1-details.html">城北区</a>
                                 </h3>
-                                <p>周边推荐：三清阁</p>
+                                <p>三清阁</p>
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-6">
                             <div class="hotel">
                                 <div class="hotel-img">
-                                    <img src="https://dl.airtable.com/.attachments/66db01db48ab1649dc99bcdd1cb09a09/4b9658e3/2.PNG
-                                    " alt="nearby 2" class="img-fluid">
+                                    <img src="img/nearby/2.png" alt="nearby 2" class="img-fluid">
                                 </div>
                                 <h3>
                                     <a href="distinct2-details.html">东大门区</a>
                                 </h3>
-                                <p>周边推荐：洪陵树木园</p>
+                                <p>洪陵树木园</p>
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-6">
                             <div class="hotel">
                                 <div class="hotel-img">
-                                    <img src="https://dl.airtable.com/.attachments/fd90e8cc4d4afa9c60df3bf7288fe496/c5bcb31a/3.PNG
-                                    " alt="Hotel 3" class="img-fluid">
+                                    <img src="img/nearby/3.png" alt="Hotel 3" class="img-fluid">
                                 </div>
                                 <h3>
                                     <a href="distinct3-details.html">广津区</a>
                                 </h3>
-                                <p>周边推荐：建大商圈</p>
+                                <p>建大商圈</p>
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-6">
                             <div class="hotel">
                                 <div class="hotel-img">
-                                    <img src="https://dl.airtable.com/.attachments/2d96371d8120dc30597692b7c99fcbc3/1a915301/4.PNG
-                                    " alt="Hotel 1" class="img-fluid">
+                                    <img src="img/nearby/4.png" alt="Hotel 1" class="img-fluid">
                                 </div>
                                 <h3>
                                     <a href="distinct4-details.html">江南区</a>
                                 </h3>
-                                <p>周边推荐：COEX Mall</p>
+                                <p>COEX Mall</p>
                             </div>
                         </div>
                     </div>
@@ -746,49 +805,45 @@
                         <div class="col-lg-3 col-md-6">
                             <div class="hotel">
                                 <div class="hotel-img">
-                                    <img src="https://dl.airtable.com/.attachments/e507ae6d87d318157e1adcef44302429/d80c378f/5.PNG
-                                    " alt="Hotel 2" class="img-fluid">
+                                    <img src="img/nearby/5.png" alt="Hotel 2" class="img-fluid">
                                 </div>
                                 <h3>
                                     <a href="distinct5-details.html">九老区</a>
                                 </h3>
-                                <p>周边推荐：首尔表演艺术高中</p>
+                                <p>首尔表演艺术高中</p>
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-6">
                             <div class="hotel">
                                 <div class="hotel-img">
-                                    <img src="https://dl.airtable.com/.attachments/607ac79e34623824075fc278eec5121f/4cc6ff8f/6.PNG
-                                    " alt="Hotel 3" class="img-fluid">
+                                    <img src="img/nearby/6.png" alt="Hotel 3" class="img-fluid">
                                 </div>
                                 <h3>
                                     <a href="distinct6-details.html">龙山区</a>
                                 </h3>
-                                <p>周边推荐：梨泰院 / 首尔塔
+                                <p>梨泰院 / 首尔塔
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-6">
                             <div class="hotel">
                                 <div class="hotel-img">
-                                    <img src="https://dl.airtable.com/.attachments/4e13d317f20b71e54cb8d01a78952d7f/acf16472/7.PNG
-                                    " alt="Hotel 3" class="img-fluid">
+                                    <img src="img/nearby/7.png" alt="Hotel 3" class="img-fluid">
                                 </div>
                                 <h3>
                                     <a href="distinct7-details.html">麻浦区</a>
                                 </h3>
-                                <p>周边推荐：弘大商圈</p>
+                                <p>弘大商圈</p>
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-6">
                             <div class="hotel">
                                 <div class="hotel-img">
-                                    <img src="https://dl.airtable.com/.attachments/b251029c30ead6aed769b9805e7a04af/3da2a078/8.PNG
-                                    " alt="Hotel 1" class="img-fluid">
+                                    <img src="img/nearby/8.png" alt="Hotel 1" class="img-fluid">
                                 </div>
                                 <h3>
                                     <a href="distinct8-details.html">松坡区</a>
                                 </h3>
-                                <p>周边推荐：乐天世界</p>
+                                <p>乐天世界</p>
                             </div>
                         </div>
                     </div>
@@ -796,37 +851,34 @@
                         <div class="col-lg-3 col-md-6">
                             <div class="hotel">
                                 <div class="hotel-img">
-                                    <img src="https://dl.airtable.com/.attachments/14c7d59272862063f703002ac2fba3f5/37657e9f/9.PNG
-                                    " alt="Hotel 2" class="img-fluid">
+                                    <img src="img/nearby/9.png" alt="Hotel 2" class="img-fluid">
                                 </div>
                                 <h3>
                                     <a href="distinct9-details.html">西大门区</a>
                                 </h3>
-                                <p>周边推荐：新村梨大商圈</p>
+                                <p>新村梨大商圈</p>
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-6">
                             <div class="hotel">
                                 <div class="hotel-img">
-                                    <img src="https://dl.airtable.com/.attachments/7955662f569b1f406398ef4e215c3fcf/9adc1764/10.PNG
-                                    " alt="Hotel 3" class="img-fluid">
+                                    <img src="img/nearby/10.png" alt="Hotel 3" class="img-fluid">
                                 </div>
                                 <h3>
                                     <a href="distinct10-details.html">中区</a>
                                 </h3>
-                                <p>周边推荐：清溪川 / 东大门设计广场(DDP)</p>
+                                <p>清溪川 / 东大门设计广场(DDP)</p>
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-6">
                             <div class="hotel">
                                 <div class="hotel-img">
-                                    <img src="https://dl.airtable.com/.attachments/c102e4dd09fd52473c5bfb9220de9f36/738ccb7c/11.PNG
-                                    " alt="Hotel 3" class="img-fluid">
+                                    <img src="img/nearby/11.png" alt="Hotel 3" class="img-fluid">
                                 </div>
                                 <h3>
                                     <a href="distinct11-details.html">钟路区</a>
                                 </h3>
-                                <p>周边推荐：北村韩屋村 / 景福宫</p>
+                                <p>北村韩屋村 / 景福宫</p>
                             </div>
                         </div>
                     </div>
@@ -1011,9 +1063,10 @@
                         <div class="col-lg-3 col-md-6 footer-contact">
                             <h4>联系方式</h4>
                             <p style="font-family: 'Noto Serif SC', serif;">
-                                微博：@BonesInNeverland
                                 <br>
-                                邮箱：Jasmine971022@163.com
+                                邮箱：
+                                <br>
+                                Jasmine971022@163.com
                             </p>
                         </div>
                     </div>
