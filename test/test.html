@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <title>test</title>
+
+  <!-- Bootstrap core CSS -->
+    <!--<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">-->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <!-- Plugin JavaScript -->
+  <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js" integrity="sha256-H3cjtrm/ztDeuhCN9I4yh4iN2Ybx/y1RM7rMmAesA0k=" crossorigin="anonymous"></script>-->
+  
+
+  <!-- chart d3 c3-->
+    <!--<link rel="stylesheet" href="/path/to/c3.css">-->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/c3/0.1.29/c3.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/d3/3.4.11/d3.js"></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/c3/0.1.29/c3.js"></script>
+
+</head>
+
+<body>
+
+        <section id="barChart" class="barChart-section">
+                <div class="container">
+                  <div class="row">
+                    <div class="col-md-10 col-lg-8 mx-auto text-center">
+                       <!-- Bar Chart card and canvas-->
+                      <div class="card shadow mb-4">
+                        <div class="card-header" >Month Avgerage Temperature of Naples</div>
+                        <div class="card-body" >
+                            <div id="aaachart"> </div>   <!-- bindto:'#aaachart',-->
+                            <p style="margin-top:15px; text-align:center;color:grey;font-size:1rem"> Data source: <a href="https://airtable.com/invite/l?inviteId=invjb7aCmr9H31NUl&inviteToken=984f5b442f174cb7f335423f336bc5721b3f540e073b999bf8c55ffc99b83556" target="_blank">Airtable Base</a> <br> Temperature chart of other cities, to be continued...</p>
+                        </div>
+                      </div>
+                  </div>
+                </div>
+              </section>
+
+
+  <!--<script src="js/grayscale.min.js"></script>-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/startbootstrap-grayscale/5.0.9/js/grayscale.min.js" integrity="sha256-spj4omdr8o22qWojzXHE4yOp3yAxKZWnJGOTypzvvjw=" crossorigin="anonymous"></script>
+  <script type="text/javascript" src="italyTopo2.js"></script> 
+  <script src="leafletTest5.js"></script> 
+  <script src="data.js"></script>
+
+</body>
+</html>
