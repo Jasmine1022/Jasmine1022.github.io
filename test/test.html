@@ -41,8 +41,82 @@
     </head>
     
     <body>
+        <header id="header">
+            <div class="container">
+                <div id="logo" class="pull-left">
+                    <!-- Uncomment below if you prefer to use a text logo -->
+                    <!-- <h1><a href="#main">C<span>o</span>nf</a></h1>-->
+                    <a href="#intro" class="scrollto"><img src="img/logo.png" alt="" title=""></a>
+                </div>
+                <nav id="nav-menu-container">
+                    <ul class="nav-menu">
+                        <li class="menu-active">
+                            <a href="#intro">主页</a>
+                        </li>
+                        <li>
+                            <a href="#schedule">演出信息</a>
+                        </li>
+                        <li>
+                            <a href="#venues">场馆信息</a>
+                        </li>
+                        <li>
+                            <a href="#nearby">周围推荐</a>
+                        </li>
+                        <li>
+                            <a href="#tips">出行贴士</a>
+                        </li>
+                        <li>
+                            <a href="#contact">联系我们</a>
+                        </li>
+                    </ul>
+                </nav>
+                <!-- #nav-menu-container -->
+            </div>
+        </header>
 
             <section id="venues" class="wow fadeInUp">
+                <div class="container">
+                    <div class="section-header">
+                        <br>
+                        <h2>场馆信息</h2>
+                        <p>请按场馆类型点击查看</p>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-4 col-md-6">
+                            <div class="speaker">
+                                <a href="https://dl.airtable.com/.attachments/6517d99207a2552a2d0fb05e5c7f6374/b1fb135f/type1.jpg
+                                "><img src="img/venue/type1.jpg" alt="venue1" class="img-fluid"></a>
+                                <div class="details">
+                                    <h3>
+                                        <a href="venuetype1-details.html" style="font-size: 18px;font-family: 'Noto Serif SC', serif;font-weight:600;">竞技场/体育馆</a>
+                                    </h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                            <div class="speaker">
+                                <a href="venuetype2-details.html"><img src="https://dl.airtable.com/.attachments/2ca61042b2c7901a6c14621eb3077f93/d05cc39c/type2.PNG
+                                    " alt="venue2" class="img-fluid"></a>
+                                <div class="details">
+                                    <h3>
+                                        <a href="venuetype2-details.html" style="font-size: 18px;font-family: 'Noto Serif SC', serif;font-weight:600;">大学会馆</a>
+                                    </h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                            <div class="speaker">
+                                <a href="venuetype3-details.html"><img src="https://dl.airtable.com/.attachments/de2c75d2795f0e8fa658530a03c248fd/03132709/type3.jpg
+                                    " alt="Speaker 3" class="img-fluid"></a>
+                                <div class="details">
+                                    <h3>
+                                        <a href="venuetype3-details.html" style="font-size: 18px;font-family: 'Noto Serif SC', serif;font-weight:600;">会展中心</a>
+                                    </h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
                         <div class="container">
                             <div class="row">
@@ -62,11 +136,78 @@
                                     </div>
                                     <div id="chart"></div>
                     <div id="chart"></div>
-                    <script src="js/data.js"></script>
+                    <script src="data.js"></script>
+
+
+                        <div class="container">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6">
+                                    <br>
+                                    <br>
+                            <button type="button" class="btn btn-danger" id="roll_up" onclick="show_districts();"
+                            style="font-family: 'Noto Serif SC', serif;margin-left:20px;">查看所有场馆具体位置</button>
+                            <br>
+                            <br>
+                            <div id="map" style="width: 400px; height: 220px;margin-left:20px;"></div>
+                            <br>
+                            <br>
+                        </div>
+                        </div>
+                        </div>
+
+                        <script>
+                            var mapboxTiles = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {attribution: 'Map data &copy; <a href="https://openstreetmap.org">OpenStreetMap</a>', maxZoom: 18,});
+                                                var map = L.map('map')
+                                                      .addLayer(mapboxTiles)
+                                                      .setView([37.55, 127], 10);
+                                                var items = [];
+                                                var airtable_read_endpoint = "https://api.airtable.com/v0/appZoMNLV8OSI2jHc/Table%201?api_key=key4BwmlceROyHV8A";
+                                                var data = [];
+                                                $.getJSON(airtable_read_endpoint, function(result) {
+                                                       $.each(result.records, function(key,value) {
+                                                           items = {};
+                                                               items["name"] = value.fields.Name;
+                                                               items["latitud"] = value.fields.Lat;
+                                                               items["longitud"] = value.fields.Lng;
+                                                               items["image_url"] = value.fields.img_url;
+                                                               items["latitud"] = value.fields.Lat;
+                                                               data.push(items);
+                                                               console.log(items);
+                                                });
+                                                });
+                        </script>
+                        <script>
+                            function show_districts(){
+                                            for (var i in data) {
+                                              var latlng = L.latLng({ lat: data[i].latitud, lng: data[i].longitud });
+                                              L.marker( latlng )
+                                                  .bindPopup( '<a href="' + data[i].url + '" target="_blank">' + '<img src="' + data[i].image_url+'" width = "80px"><br>'+data[i].name + '</a>' )
+                                                  .addTo(map);
+                                              }
+                                             }
+                        </script>
 
 
             </section>
 
+
+
+        <a href="#" class="back-to-top"><i class="fa fa-angle-up"></i></a>
+        <!-- JavaScript Libraries -->
+        <script src="lib/jquery/jquery.min.js"></script>
+        <script src="lib/jquery/jquery-migrate.min.js"></script>
+        <script src="lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="lib/easing/easing.min.js"></script>
+        <script src="lib/superfish/hoverIntent.js"></script>
+        <script src="lib/superfish/superfish.min.js"></script>
+        <script src="lib/wow/wow.min.js"></script>
+        <script src="lib/venobox/venobox.min.js"></script>
+        <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+        <!-- Contact Form JavaScript File -->
+        <script src="contactform/contactform.js"></script>
+        <!-- Template Main Javascript File -->
+        <script src="js/main.js"></script>
+        <script src="js/data.js"></script>
 
     </body>
 
