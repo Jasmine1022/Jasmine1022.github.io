@@ -698,13 +698,13 @@
                          $("button#ranking").click(function() {
                          var items = [];
                          var i = 0;
-                         var airtable_read_endpoint = "https://api.airtable.com/v0/app4dCIRDc3Hn3jOA/%E6%BC%94%E5%87%BA%E7%B1%BB%E5%9E%8B%E6%B1%87%E6%80%BB?api_key=keyFNbgLbJbzpQY3F";
+                         var airtable_read_endpoint = "https://api.airtable.com/v0/appUbctO2Co9tXvAt/Contain?api_key=key4BwmlceROyHV8A";
                          var dataSet = [];
                          $.getJSON(airtable_read_endpoint, function(result) {
                          $.each(result.records, function(key,value) {
                          items = [];
-                         items.push(value.fields.类型);
-                         items.push(value.fields.次数);
+                         items.push(value.fields.Name);
+                         items.push(value.fields.Contain);
                          dataSet.push(items);
                          console.log(items);
                          }); // end .each
@@ -714,9 +714,9 @@
                         data: dataSet,
                         retrieve: true,
                         columns: [
-                        { title: "类型",
+                        { title: "Name",
                         defaultContent:""},
-                        { title: "次数",
+                        { title: "Contain",
                        defaultContent:"" },
                         ]
                         } );
@@ -727,12 +727,9 @@
                         type : 'bar'
                         },
                         axis: {
-                        x: {label: '类型'},
-                        y: {label: '次数'}
+                        x: {label: 'Name'},
+                        y: {label: 'Contain'}
                         },
-                        bar: {
-                         title: "每一类型的演出次数:",
-                        }
                        });
                     });
                     }); 
@@ -1039,7 +1036,7 @@
                                 </li>
                                 <li>
                                     <i class="fa fa-angle-right"></i>
-                                    <a href="https://www.airbnb.cn/s/%E9%A6%96%E5%B0%94/homes?refinement_paths%5B%5D=%2Fhomes&query=%E9%A6%96%E5%B0%94&checkin=&checkout=" target="_blank">Airbnb预定民宿</a>
+                                    <a href="https://www.tripadvisor.cn" target="_blank">tripadvisor查看攻略</a>
                                 </li>
                             </ul>
                         </div>

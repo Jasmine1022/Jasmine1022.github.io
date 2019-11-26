@@ -18,7 +18,7 @@ $(document).ready(function(){
     $("button#get_data").click(function() {
         var items = [];
         var i = 0;
-        var airtable_read_endpoint = "https://api.airtable.com/v0/appl9brenWHvcmAo4/%E6%BC%94%E5%87%BA%E4%BF%A1%E6%81%AF?api_key=keyFNbgLbJbzpQY3F";
+        var airtable_read_endpoint = "https://api.airtable.com/v0/appl9brenWHvcmAo4/%E6%BC%94%E5%87%BA%E4%BF%A1%E6%81%AF?api_key=key4BwmlceROyHV8A";
         var dataSet = [];
         $.getJSON(airtable_read_endpoint, function(result) {
                $.each(result.records, function(key,value) {
@@ -58,7 +58,7 @@ $(document).ready(function(){
      $("button#get_data2").click(function() {
       var items = [];
       var i = 0;
-      var airtable_read_endpoint = "https://api.airtable.com/v0/app4dCIRDc3Hn3jOA/%E6%BC%94%E5%87%BA%E7%B1%BB%E5%9E%8B%E6%B1%87%E6%80%BB?api_key=keyFNbgLbJbzpQY3F";
+      var airtable_read_endpoint = "https://api.airtable.com/v0/app4dCIRDc3Hn3jOA/%E6%BC%94%E5%87%BA%E7%B1%BB%E5%9E%8B%E6%B1%87%E6%80%BB?api_key=key4BwmlceROyHV8A";
       var dataSet = [];
       $.getJSON(airtable_read_endpoint, function(result) {
              $.each(result.records, function(key,value) {
