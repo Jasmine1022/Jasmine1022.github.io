@@ -13,7 +13,7 @@ $(document).ready(function(){
         $x.empty();
     });
 
-     $("button#get_data2").click(function() {
+     $("button#ranking").click(function() {
       var items = [];
       var i = 0;
       var airtable_read_endpoint = "https://api.airtable.com/v0/appUbctO2Co9tXvAt/Contain?api_key=key4BwmlceROyHV8A";
