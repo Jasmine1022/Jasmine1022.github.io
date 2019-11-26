@@ -38,6 +38,8 @@ $(document).ready(function(){
                 y: {label: 'Contain'}
               },
           });
+        }); 
+    }); 
     
    $("button#get_data2").click(function() {
     var items = [];
@@ -64,6 +66,8 @@ $(document).ready(function(){
                 y: {label: 'Contain'}
               },
           });
+        });
+    }); 
     
      $("button#get_data3").click(function() {
     var items = [];
@@ -90,6 +94,8 @@ $(document).ready(function(){
                 y: {label: 'Contain'}
               },
           });
+        });
+    }); 
     
     $("button#get_data4").click(function() {
     var items = [];
@@ -116,10 +122,8 @@ $(document).ready(function(){
                 y: {label: 'Contain'}
               },
           });
+        });
+    }); 
 
-
-    }); // end .getJSON
-
- }); // end button
 
 }); // document ready
