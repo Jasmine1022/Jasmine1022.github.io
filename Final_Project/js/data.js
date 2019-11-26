@@ -5,6 +5,7 @@ $(document).ready(function(){
       var i = 0;
       var airtable_read_endpoint = "https://api.airtable.com/v0/appUbctO2Co9tXvAt/Contain?api_key=key4BwmlceROyHV8A";
       var dataSet = [];
+
       $.getJSON(airtable_read_endpoint, function(result) {
              $.each(result.records, function(key,value) {
                  items = [];
@@ -15,7 +16,7 @@ $(document).ready(function(){
               }); // end .each
               console.log(dataSet);
 
-           $('#table2').DataTable( {
+           $('#table').DataTable( {
                data: dataSet,
                retrieve: true,
                columns: [
