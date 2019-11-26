@@ -23,18 +23,25 @@
         rel="stylesheet" type="text/css">
     </head>
     
-
-    <div class="container">
+    <body>
+        <div class="container">
             <div class="row">
-             <div class="col-md-10 col-lg-8 mx-auto text-center">
-                <div class="card shadow mb-4">
-                 <div class="card-header" >所有场馆的最多容纳人数</div>
-                 <div class="card-body" >
-                 <div id="chart"> </div>
-                 </div>
+                <h1>Performance Information</h1>
+                <iframe class="airtable-embed" src="https://airtable.com/embed/shrDKh353wM5vX162?backgroundColor=teal&amp;viewControls=on"
+                frameborder="0" onmousewheel="" width="100%" height="533" style="background: transparent; border: 1px solid #ccc;"></iframe>
             </div>
-         </div>
-        </div>
+            <div class="row">
+                <button type="button" class="btn btn-info" id="get_data">Show Table</button>
+                <br>
+                <div class="table-responsive">
+                    <table id="table1" width="100%" class="table table-bordered"></table>
+                    <button type="button" class="btn btn-info" id="get_data2">Show Chart</button>
+                    <br>
+                    <div class="table-responsive">
+                        <table id="table2" width="100%" class="table table-bordered"></table>
+                    </div>
+                    <div id="chart"></div>
+        <div id="chart"></div>
     
     <script src="data.js"></script>
     </body>
