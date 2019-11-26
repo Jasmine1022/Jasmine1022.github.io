@@ -6,8 +6,6 @@ $(document).ready(function(){
 
     $("button#show_h2").click(function() {
         $("h2").show(300);
-        $("h2").css("color","blue");
-        $("h2").html("You clicked me hard.");
     });
 
     $("button#clear_screen").click(function() {
@@ -15,12 +13,11 @@ $(document).ready(function(){
         $x.empty();
     });
 
-     $("button#ranking").click(function() {
+     $("button#get_data2").click(function() {
       var items = [];
       var i = 0;
       var airtable_read_endpoint = "https://api.airtable.com/v0/appUbctO2Co9tXvAt/Contain?api_key=key4BwmlceROyHV8A";
       var dataSet = [];
-
       $.getJSON(airtable_read_endpoint, function(result) {
              $.each(result.records, function(key,value) {
                  items = [];
@@ -31,7 +28,7 @@ $(document).ready(function(){
               }); // end .each
               console.log(dataSet);
 
-           $('#table').DataTable( {
+           $('#table2').DataTable( {
                data: dataSet,
                retrieve: true,
                columns: [
@@ -61,3 +58,5 @@ $(document).ready(function(){
    }); // end button
 
 }); // document ready
+
+
