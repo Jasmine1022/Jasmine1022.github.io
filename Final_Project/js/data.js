@@ -30,17 +30,6 @@ $(document).ready(function(){
               }); // end .each
               console.log(dataSet);
 
-           $('#table2').DataTable( {
-               data: dataSet,
-               retrieve: true,
-               columns: [
-                   { title: "Name",
-                     defaultContent:""},
-                   { title: "Contain",
-                       defaultContent:"" },
-               ]
-           } );
-
            var chart = c3.generate({
                 data: {
                     columns: dataSet,
