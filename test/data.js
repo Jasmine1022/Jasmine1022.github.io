@@ -16,7 +16,6 @@ $(document).ready(function(){
             console.log(dataSet);
 
          var chart = c3.generate({
-          bindto:'#aaachart',
               data: {
                   columns: dataSet,
                   type : 'bar'
