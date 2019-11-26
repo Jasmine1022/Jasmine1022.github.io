@@ -32,7 +32,7 @@
         <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/d3/3.4.11/d3.js"></script>
         <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/c3/0.1.29/c3.js"></script>
         <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-        <script="" src="data.js"></script>
+        <script="" src="js/data.js"></script>
         <!--=======================================================T
         heme Name:==========================H eader============================-->
     </head>
@@ -634,6 +634,7 @@
                                 </div>
                             </div>
                         </div>
+
                         <div class="row">
                             <div class="col-lg-6 col-md-6">
                                     <br>
@@ -647,6 +648,7 @@
                             <br>
                         </div>
                         </div>
+
                         <script>
                             var mapboxTiles = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {attribution: 'Map data &copy; <a href="https://openstreetmap.org">OpenStreetMap</a>', maxZoom: 18,});
                                             
@@ -655,7 +657,7 @@
                                                       .setView([37.55, 127], 10);
                                             
                                                 var items = [];
-                                                var airtable_read_endpoint = "https://api.airtable.com/v0/appZoMNLV8OSI2jHc/Table%201?api_key=keyFNbgLbJbzpQY3F";
+                                                var airtable_read_endpoint = "https://api.airtable.com/v0/appZoMNLV8OSI2jHc/Table%201?api_key=key4BwmlceROyHV8A";
                                             
                                                 var data = [];
                                                 $.getJSON(airtable_read_endpoint, function(result) {
@@ -697,6 +699,7 @@
                           <div id="chart"></div>
                         </div>
                         </div>
+
                     </div>
                 </div>
             </section>
