@@ -635,7 +635,7 @@
                         </div>
 
                         <div class="row">
-                            <div class="col-lg-12 col-md-6">
+                            <div class="col-lg-6 col-md-6">
                                     <br>
                                     <br>
                             <button type="button" class="btn btn-danger" id="roll_up" onclick="show_districts();"
@@ -649,14 +649,11 @@
                         </div>
                         <script>
                             var mapboxTiles = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {attribution: 'Map data &copy; <a href="https://openstreetmap.org">OpenStreetMap</a>', maxZoom: 18,});
-                                            
                                                 var map = L.map('map')
                                                       .addLayer(mapboxTiles)
                                                       .setView([37.55, 127], 10);
-                                            
                                                 var items = [];
                                                 var airtable_read_endpoint = "https://api.airtable.com/v0/appZoMNLV8OSI2jHc/Table%201?api_key=key4BwmlceROyHV8A";
-                                            
                                                 var data = [];
                                                 $.getJSON(airtable_read_endpoint, function(result) {
                                                        $.each(result.records, function(key,value) {
@@ -673,21 +670,20 @@
                         </script>
                         <script>
                             function show_districts(){
-                                    
                                             for (var i in data) {
                                               var latlng = L.latLng({ lat: data[i].latitud, lng: data[i].longitud });
                                               L.marker( latlng )
                                                   .bindPopup( '<a href="' + data[i].url + '" target="_blank">' + '<img src="' + data[i].image_url+'" width = "80px"><br>'+data[i].name + '</a>' )
                                                   .addTo(map);
                                               }
-                                    
                                              }
                         </script>
 
         <div class="row">
         <div class="table-responsive">
-            <table id="table1" width="100%" class="table table-bordered"></table>
-            <button type="button" class="btn btn-danger" id="get_data2" style="font-family: 'Noto Serif SC', serif;margin-left:20px;">查看所有场馆的最多容纳人数</button>
+            <br>
+            <br>
+            <button type="button" class="btn btn-danger" id="get_data2" style="font-family: 'Noto Serif SC', serif; margin-left:20px;">查看所有场馆的最多容纳人数</button>
             <br>
             <div class="table-responsive">
                 <table id="table2" width="100%" class="table table-bordered"></table>
