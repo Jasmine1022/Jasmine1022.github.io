@@ -1,20 +1,5 @@
 $(document).ready(function(){
 
-    $("button#hide_h2").click(function() {
-        $("h2").hide(500);
-    });
-
-    $("button#show_h2").click(function() {
-        $("h2").show(300);
-        $("h2").css("color","blue");
-        $("h2").html("You clicked me hard.");
-    });
-
-    $("button#clear_screen").click(function() {
-        var $x = $("container");
-        $x.empty();
-    });
-
      $("button#get_data1").click(function() {
       var items = [];
       var i = 0;
@@ -24,7 +9,7 @@ $(document).ready(function(){
              $.each(result.records, function(key,value) {
                  items = [];
                      items.push(value.fields.Name);
-                     items.push(value.fields.Contain);
+                     items.push(value.fields.Capacity);
                      dataSet.push(items);
                      console.log(items);
               }); // end .each
@@ -37,7 +22,7 @@ $(document).ready(function(){
                 },
                 axis: {
                   x: {label: 'Name'},
-                  y: {label: 'Contain'}
+                  y: {label: 'Capacity'}
                 },
             });
       }); // end .getJSON
@@ -52,7 +37,7 @@ $(document).ready(function(){
            $.each(result.records, function(key,value) {
                items = [];
                    items.push(value.fields.Name);
-                   items.push(value.fields.Contain);
+                   items.push(value.fields.Capacity);
                    dataSet.push(items);
                    console.log(items);
             }); // end .each
@@ -65,7 +50,7 @@ $(document).ready(function(){
               },
               axis: {
                 x: {label: 'Name'},
-                y: {label: 'Contain'}
+                y: {label: 'Capacity'}
               },
           });
     }); // end .getJSON
@@ -80,7 +65,7 @@ $(document).ready(function(){
            $.each(result.records, function(key,value) {
                items = [];
                    items.push(value.fields.Name);
-                   items.push(value.fields.Contain);
+                   items.push(value.fields.Capacity);
                    dataSet.push(items);
                    console.log(items);
             }); // end .each
@@ -93,7 +78,7 @@ $(document).ready(function(){
               },
               axis: {
                 x: {label: 'Name'},
-                y: {label: 'Contain'}
+                y: {label: 'Capacity'}
               },
           });
     }); // end .getJSON
@@ -108,7 +93,7 @@ $(document).ready(function(){
            $.each(result.records, function(key,value) {
                items = [];
                    items.push(value.fields.Name);
-                   items.push(value.fields.Contain);
+                   items.push(value.fields.Capacity);
                    dataSet.push(items);
                    console.log(items);
             }); // end .each
@@ -121,7 +106,7 @@ $(document).ready(function(){
               },
               axis: {
                 x: {label: 'Name'},
-                y: {label: 'Contain'}
+                y: {label: 'Capacity'}
               },
           });
     }); // end .getJSON
