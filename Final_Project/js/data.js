@@ -1,5 +1,33 @@
 $(document).ready(function(){
 
+    $("button#get_data").click(function() {
+        var items = [];
+        var i = 0;
+        var airtable_read_endpoint = "https://api.airtable.com/v0/app4dCIRDc3Hn3jOA/All?api_key=key4BwmlceROyHV8A";
+        var dataSet = [];
+        $.getJSON(airtable_read_endpoint, function(result) {
+               $.each(result.records, function(key,value) {
+                   items = [];
+                       items.push(value.fields.Name);
+                       items.push(value.fields.Capacity);
+                       dataSet.push(items);
+                       console.log(items);
+                }); // end .each
+                console.log(dataSet);
+  
+             var chart = c3.generate({
+                  data: {
+                      columns: dataSet,
+                      type : 'bar'
+                  },
+                  axis: {
+                    x: {label: 'Name'},
+                    y: {label: 'Capacity'}
+                  },
+              });
+        }); // end .getJSON
+     }); // end button
+
      $("button#get_data1").click(function() {
       var items = [];
       var i = 0;
@@ -107,6 +135,34 @@ $(document).ready(function(){
               axis: {
                 x: {label: 'Name'},
                 y: {label: 'Capacity'}
+              },
+          });
+    }); // end .getJSON
+ }); // end button
+
+ $("button#get_data4").click(function() {
+    var items = [];
+    var i = 0;
+    var airtable_read_endpoint = "https://api.airtable.com/v0/app4dCIRDc3Hn3jOA/Comments-?api_key=key4BwmlceROyHV8A";
+    var dataSet = [];
+    $.getJSON(airtable_read_endpoint, function(result) {
+           $.each(result.records, function(key,value) {
+               items = [];
+                   items.push(value.fields名称);
+                   items.push(value.fields.TripAdvisor点评数);
+                   dataSet.push(items);
+                   console.log(items);
+            }); // end .each
+            console.log(dataSet);
+
+         var chart = c3.generate({
+              data: {
+                  columns: dataSet,
+                  type : 'bar'
+              },
+              axis: {
+                x: {label: '名称'},
+                y: {label: 'TripAdvisor点评数'}
               },
           });
     }); // end .getJSON
