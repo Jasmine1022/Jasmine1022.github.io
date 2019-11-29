@@ -17,7 +17,7 @@ $(document).ready(function(){
             }); // end .each
             console.log(dataSet);
 
-         var again = c3.generate({
+         var aachart = c3.generate({
               data: {
                   columns: dataSet,
                   type : 'bar'
@@ -45,7 +45,7 @@ $(document).ready(function(){
             }); // end .each
             console.log(dataSet);
 
-         var again = c3.generate({
+         var aachart = c3.generate({
               data: {
                   columns: dataSet,
                   type : 'bar'
@@ -73,7 +73,7 @@ $(document).ready(function(){
             }); // end .each
             console.log(dataSet);
 
-         var again = c3.generate({
+         var aachart = c3.generate({
               data: {
                   columns: dataSet,
                   type : 'bar'
