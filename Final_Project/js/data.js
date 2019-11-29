@@ -140,7 +140,7 @@ $(document).ready(function(){
     }); // end .getJSON
  }); // end button
 
- $("button#get_data4").click(function() {
+ $("button#get_data5").click(function() {
     var items = [];
     var i = 0;
     var airtable_read_endpoint = "https://api.airtable.com/v0/app4dCIRDc3Hn3jOA/Comments-?api_key=key4BwmlceROyHV8A";
