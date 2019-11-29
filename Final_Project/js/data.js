@@ -155,7 +155,7 @@ $(document).ready(function(){
             }); // end .each
             console.log(dataSet);
 
-         var chart = c3.generate({
+         var chart2 = c3.generate({
               data: {
                   columns: dataSet,
                   type : 'bar'
@@ -183,7 +183,7 @@ $(document).ready(function(){
             }); // end .each
             console.log(dataSet);
 
-         var chart = c3.generate({
+         var chart2 = c3.generate({
               data: {
                   columns: dataSet,
                   type : 'bar'
@@ -211,7 +211,7 @@ $(document).ready(function(){
             }); // end .each
             console.log(dataSet);
 
-         var chart = c3.generate({
+         var chart2 = c3.generate({
               data: {
                   columns: dataSet,
                   type : 'bar'
