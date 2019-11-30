@@ -132,7 +132,7 @@ $(document).ready(function(){
             }); // end .each
             console.log(dataSet);
 
-         $('#table1').DataTable( {
+         $('#table').DataTable( {
              data: dataSet,
              retrieve: true,
              columns: [
