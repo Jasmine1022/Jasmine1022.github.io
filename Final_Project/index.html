@@ -696,7 +696,7 @@
             </div>
             </section>
             <!--==========================N earby Section============================-->
-            <section id="nearby" class="section-with-bg wow fadeInUp">
+            <section id="nearby" class="section-with-bg wow fadeInUp" style="padding-bottom:5px">
                 <div class="container">
                     <div class="section-header">
                         <br>
@@ -711,18 +711,6 @@
                     </div>
 
                     <div class="row">
-
-                            <div class="col-lg-1 col-md-6">
-                                   <br>
-                                   <button type="button" class="btn btn-danger" onclick="show()" 
-                                   style="font-family: 'Noto Serif SC', serif;">一键查看所有推荐去处的具体信息</button>
-                                   <br>
-                                   <iframe class="airtable-embed" id="a"
-                                   src="https://airtable.com/embed/shrMEyqQp0Wt1n8CK?backgroundColor=teal&viewControls=on" 
-                                   frameborder="0" onmousewheel="" width="100%" height="533"
-                                   style="background: transparent; border: 1px solid #ccc;display:none;"></iframe>
-                               </div>
-
                         <div class="col-lg-3 col-md-6">
                             <div class="hotel">
                                 <div class="hotel-img">
@@ -869,6 +857,29 @@
                     </div>
                 </div>
             </section>
+
+            <section id="nearby" class="section-with-bg" style="padding:0px;">
+                <div class="container">
+                            <button type="button" class="btn btn-danger" onclick="show()" 
+                            style="font-family: 'Noto Serif SC', serif;">一键查看所有推荐去处的具体信息</button>
+                            <br><br><br>
+                            <script>
+                            function show(){   
+                            var ul1 = document.getElementById("a");   
+                            if (ul1.style.display == "block") {   
+                            ul1.style.display = "none";   
+                            } else {   
+                            ul1.style.display = "block";   
+                            }   
+                            }    
+                            </script>
+                            <iframe class="airtable-embed" id="a"
+                            src="https://airtable.com/embed/shrMEyqQp0Wt1n8CK?backgroundColor=teal&viewControls=on" 
+                            frameborder="0" onmousewheel="" width="100%" height="533"
+                            style="background: transparent; border: 1px solid #ccc;display:none;"></iframe>
+                            <br><br><br>
+                        </div>
+                       </section>
             <!--==========================T ips Section============================-->
             <section id="tips" class="wow fadeInUp">
                 <div class="container">
@@ -964,33 +975,33 @@
                         <br>
                         <br>
                         <div class="form">
-                            <div id="sendmessage">Your message has been sent. Thank you!</div>
+                            <div id="sendmessage">您的信息已收到，谢谢！</div>
                             <div id="errormessage"></div>
                             <form action="" method="post" role="form" class="contactForm">
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
-                                        <input type="text" name="name" class="form-control" id="name" placeholder="Your Name"
+                                        <input type="text" name="name" class="form-control" id="name" placeholder="您的姓名"
                                         data-rule="minlen:4" data-msg="Please enter at least 4 chars">
                                         <div class="validation"></div>
                                     </div>
                                     <div class="form-group col-md-6">
-                                        <input type="email" class="form-control" name="email" id="email" placeholder="Your Email"
+                                        <input type="email" class="form-control" name="email" id="email" placeholder="您的邮箱"
                                         data-rule="email" data-msg="Please enter a valid email">
                                         <div class="validation"></div>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject"
+                                    <input type="text" class="form-control" name="subject" id="subject" placeholder="主题"
                                     data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject">
                                     <div class="validation"></div>
                                 </div>
                                 <div class="form-group">
                                     <textarea class="form-control" name="message" rows="5" data-rule="required"
-                                    data-msg="Please write something for us" placeholder="Message"></textarea>
+                                    data-msg="Please write something for us" placeholder="信息"></textarea>
                                     <div class="validation"></div>
                                 </div>
                                 <div class="text-center">
-                                    <button type="submit">Send Message</button>
+                                    <button type="submit">提交信息</button>
                                 </div>
                             </form>
                         </div>
